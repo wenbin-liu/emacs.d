@@ -381,5 +381,20 @@ typical word processor."
      (sqlite . t))))
 
 
+;;;org-ref
+(setq org-ref-bibliography-notes "~/../../Documents/bib/notes"
+      org-ref-default-bibliography '("~/../../Documents/mybib.bib")
+      org-ref-pdf-directory "~/../../documents/bib/pdf")
+;; Latex Setting
+(setq org-latex-compiler "xelatex")
+;;(setq org-latex-pdf-process (list "latexmk -pdflatex=xelatex -shell-escape -bibtex -f -pdf %f"))
+;; (setq org-latex-pdf-process (list "latexmk -xelatex -gg -shell-escape -bibtex -f -pdf %b.tex"))
+(setq org-latex-pdf-process (list "latexmk -pdflatex='%latex -shell-escape -interaction nonstopmode' -pdf -output-directory=%o %f"))
+(require 'org-ref)
+
+;;odt export settings
+(setq org-latex-to-mathml-convert-command
+      "latexmlmath \"%i\" --presentationmathml=%o")
+
 (provide 'init-org)
 ;;; init-org.el ends here
