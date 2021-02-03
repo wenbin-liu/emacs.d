@@ -56,16 +56,16 @@
 
 ;; (helm-delete-action-from-source "Insert Citation" helm-source-bibtex)
 ;; (helm-add-action-to-source "Insert Citation" 'bibtex-completion-insert-citation helm-source-bibtex 0)
-(setq bibtex-completion-library-path '("c:/users/admin/documents/bib/pdf" ))
-(setq bibtex-completion-notes-path "c:/users/admin/documents/bib/notes")
+(setq bibtex-completion-library-path '("~/Documents/bib/pdf" ))
+(setq bibtex-completion-notes-path "~/Documents/bib/notes")
 (setq bibtex-completion-bibliography
-      '("c:/users/admin/Documents/mybib.bib"))
+      '("~/Documents/mybib.bib"))
 (setq bibtex-completion-pdf-field "File")
 
 ;; RefTex Setting
 (setq reftex-plug-into-AUCTeX t)
 (add-hook 'LaTeX-mode-hook 'reftex-mode)
-(setq reftex-default-bibliography '("c:/users/admin/Documents/mybib.bib"))
+(setq reftex-default-bibliography '("~/Documents/mybib.bib"))
 ;;org-ref
 ;; (setq org-ref-completion-library 'org-ref-ivy-cite)
 ;; (require 'org-ref)

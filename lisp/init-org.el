@@ -382,9 +382,9 @@ typical word processor."
 
 
 ;;;org-ref
-(setq org-ref-bibliography-notes "~/../../Documents/bib/notes"
-      org-ref-default-bibliography '("~/../../Documents/mybib.bib")
-      org-ref-pdf-directory "~/../../documents/bib/pdf")
+(setq org-ref-bibliography-notes "~/Documents/bib/notes"
+      org-ref-default-bibliography '("~/Documents/mybib.bib")
+      org-ref-pdf-directory "~/Documents/bib/pdf")
 ;; Latex Setting
 (setq org-latex-compiler "xelatex")
 ;;(setq org-latex-pdf-process (list "latexmk -pdflatex=xelatex -shell-escape -bibtex -f -pdf %f"))
