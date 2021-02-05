@@ -380,12 +380,15 @@ typical word processor."
      (sql . t)
      (sqlite . t))))
 
-
-;;;org-ref
+
+;;; org-ref
 (setq org-ref-bibliography-notes "~/Documents/bib/notes"
       org-ref-default-bibliography '("~/Documents/mybib.bib")
       org-ref-pdf-directory "~/Documents/bib/pdf")
-;; Latex Setting
+
+
+
+;;; Latex Setting
 (setq org-latex-compiler "xelatex")
 ;;(setq org-latex-pdf-process (list "latexmk -pdflatex=xelatex -shell-escape -bibtex -f -pdf %f"))
 ;; (setq org-latex-pdf-process (list "latexmk -xelatex -gg -shell-escape -bibtex -f -pdf %b.tex"))
@@ -395,6 +398,26 @@ typical word processor."
 ;;odt export settings
 (setq org-latex-to-mathml-convert-command
       "latexmlmath \"%i\" --presentationmathml=%o")
+
+
+
+;;; org-roam
+;;;
+(setq org-roam-directory "~/OneDrive/notes/org/org-roam")
+(add-hook 'after-init-hook 'org-roam-mode)
+(setq org-roam-tag-sources '(prop vanilla))
+
+
+
+;;;ox-hugo
+(with-eval-after-load 'ox
+  (require 'ox-hugo))
+
+
+;;; org-bullets
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
 
 (provide 'init-org)
 ;;; init-org.el ends here
