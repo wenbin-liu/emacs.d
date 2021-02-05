@@ -419,5 +419,17 @@ typical word processor."
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 
+
+;; Olivetti
+;; Look & Feel for long-form writing
+
+;; Set the body text width
+(setq olivetti-body-width 80)
+
+;; Enable Olivetti for text-related mode such as Org Mode
+(add-hook 'text-mode-hook 'olivetti-mode)
+
+
+
 (provide 'init-org)
 ;;; init-org.el ends here
