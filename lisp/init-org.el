@@ -404,6 +404,7 @@ typical word processor."
 ;;; org-roam
 ;;;
 (setq org-roam-directory "~/OneDrive/notes/org/org-roam")
+(setq org-roam-db-location "~/OneDrive/notes/org/org-roam/")
 (add-hook 'after-init-hook 'org-roam-mode)
 (setq org-roam-tag-sources '(prop vanilla))
 
