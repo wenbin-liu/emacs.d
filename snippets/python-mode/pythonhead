@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: pythonhead
+# key: pyHead
+# --
+# -*- coding: utf-8 -*-
+# @Author  : Wenbin Liu
+# @Time    : `(format-time-string "%Y-%m-%d")`
+# @Description: $1
