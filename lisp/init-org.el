@@ -430,6 +430,13 @@ typical word processor."
 (add-hook 'text-mode-hook 'olivetti-mode)
 
 
+(require 'org-crypt)
+(org-crypt-use-before-save-magic)
+(setq org-tags-exclude-from-inheritance '("crypt"))
+
+(setq org-crypt-key nil)
+;; GPG key to use for encryption
+;; Either the Key ID or set to nil to use symmetric encryption.
 
 (provide 'init-org)
 ;;; init-org.el ends here
