@@ -378,7 +378,8 @@ typical word processor."
      (screen . nil)
      (,(if (locate-library "ob-sh") 'sh 'shell) . t)
      (sql . t)
-     (sqlite . t))))
+     (sqlite . t)
+     (ipython . t))))
 
 
 ;;; org-ref
@@ -393,7 +394,7 @@ typical word processor."
 ;;(setq org-latex-pdf-process (list "latexmk -pdflatex=xelatex -shell-escape -bibtex -f -pdf %f"))
 ;; (setq org-latex-pdf-process (list "latexmk -xelatex -gg -shell-escape -bibtex -f -pdf %b.tex"))
 (setq org-latex-pdf-process (list "latexmk -pdflatex='%latex -shell-escape -interaction nonstopmode' -pdf -output-directory=%o %f"))
-(require 'org-ref)
+(require-package 'org-ref)
 
 ;;odt export settings
 (setq org-latex-to-mathml-convert-command
@@ -404,7 +405,7 @@ typical word processor."
 ;;; org-roam
 ;;;
 (setq org-roam-directory "~/OneDrive/notes/org/org-roam")
-(setq org-roam-db-location "~/OneDrive/notes/org/org-roam/")
+(setq org-roam-db-location "~/OneDrive/notes/org/org-roam/org-roam.db")
 (add-hook 'after-init-hook 'org-roam-mode)
 (setq org-roam-tag-sources '(prop vanilla))
 
@@ -416,7 +417,7 @@ typical word processor."
 
 
 ;;; org-bullets
-(require 'org-bullets)
+(require-package 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 
@@ -438,6 +439,16 @@ typical word processor."
 (setq org-crypt-key nil)
 ;; GPG key to use for encryption
 ;; Either the Key ID or set to nil to use symmetric encryption.
+
+
+;; org-babel
+(require-package 'ob-ipython)
+(setq org-confirm-babel-evaluate nil)   ;don't prompt me to confirm everytime I want to evaluate a block
+
+;;; display/update images in the buffer after I evaluate
+(add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append)
+
+
 
 (provide 'init-org)
 ;;; init-org.el ends here

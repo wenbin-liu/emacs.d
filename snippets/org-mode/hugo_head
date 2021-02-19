@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: hugo_head
+# key: hugoHead
+# --
+#+hugo_base_dir: ~/Documents/venns/
+#+hugo_section: posts
+#+hugo_tags: $1
+#+hugo_categories: $2
+$0
