@@ -183,6 +183,7 @@
 (require 'init-local nil t)
 (require 'init-latex nil t)
 (require 'init-yasnippet nil t)
+(require 'init-lsp nil t)
 
 
 
