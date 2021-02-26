@@ -29,5 +29,11 @@
   :config
   (which-key-mode))
 
+
+
+;;; dap-mode setting
+(use-package dap-mode)
+(setq dap-auto-configure-features '(sessions locals controls tooltip))
+
 (provide 'init-lsp)
 ;;; init-lsp.el ends here
