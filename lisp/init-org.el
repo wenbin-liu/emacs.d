@@ -426,10 +426,10 @@ typical word processor."
 ;; Look & Feel for long-form writing
 
 ;; Set the body text width
-(setq olivetti-body-width 80)
+;; (setq olivetti-body-width 80)
 
 ;; Enable Olivetti for text-related mode such as Org Mode
-(add-hook 'text-mode-hook 'olivetti-mode)
+;; (add-hook 'text-mode-hook 'olivetti-mode)
 
 
 (require 'org-crypt)
@@ -448,6 +448,12 @@ typical word processor."
 ;;; display/update images in the buffer after I evaluate
 (add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append)
 
+
+;; org-download
+(use-package org-download
+  :ensure t
+  :init
+  (add-hook 'dired-mode-hook 'org-download-enable))
 
 
 (provide 'init-org)
