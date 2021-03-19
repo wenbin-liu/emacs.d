@@ -387,6 +387,17 @@ typical word processor."
       org-ref-default-bibliography '("~/Documents/mybib.bib")
       org-ref-pdf-directory "~/Documents/bib/pdf")
 
+(defun my/org-ref-open-pdf-at-point ()
+  "Open the pdf for bibtex key under point if it exists."
+  (interactive)
+  (let* ((results (org-ref-get-bibtex-key-and-file))
+         (key (car results))
+         (pdf-file (car (bibtex-completion-find-pdf key))))
+    (if (file-exists-p pdf-file)
+        (org-open-file pdf-file)
+      (message "No PDF found for %s" key))))
+
+(setq org-ref-open-pdf-function 'my/org-ref-open-pdf-at-point)
 
 
 ;;; Latex Setting
@@ -411,6 +422,12 @@ typical word processor."
 
 
 
+;;; org-roam-bibtex
+(use-package org-roam-bibtex
+  :after org-roam
+  :hook (org-roam-mode . org-roam-bibtex-mode))
+
+
 ;;;ox-hugo
 (with-eval-after-load 'ox
   (require 'ox-hugo))
@@ -420,6 +437,10 @@ typical word processor."
 (require-package 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
+
+
+;;; pretty entities
+(setq org-pretty-entities t)
 
 
 ;; Olivetti
