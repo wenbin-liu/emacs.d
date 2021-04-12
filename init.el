@@ -52,6 +52,7 @@
 (require-package 'diminish)
 (maybe-require-package 'scratch)
 (require-package 'command-log-mode)
+(require-package 'use-package)
 
 (require 'init-frame-hooks)
 (require 'init-xterm)
