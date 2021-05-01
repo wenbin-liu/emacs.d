@@ -71,7 +71,11 @@
   (add-hook 'dhall-mode-hook 'stack-exec-path-mode))
 
 
+
+(use-package lsp-mode
+  :hook  ((haskell-mode haskell-literate-mode) . lsp))
 
+(use-package lsp-haskell)
 
 (provide 'init-haskell)
 ;;; init-haskell.el ends here
