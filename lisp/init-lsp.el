@@ -21,7 +21,9 @@
 (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
 
 ;; optionally if you want to use debugger
-(use-package dap-mode)
+(use-package dap-mode
+  :config
+  (setq dap-auto-configure-features '(sessions locals controls tooltip)))
 ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
 
 ;; optional if you want which-key integration
@@ -30,10 +32,6 @@
   (which-key-mode))
 
 
-
-;;; dap-mode setting
-(use-package dap-mode)
-(setq dap-auto-configure-features '(sessions locals controls tooltip))
 
 (provide 'init-lsp)
 ;;; init-lsp.el ends here

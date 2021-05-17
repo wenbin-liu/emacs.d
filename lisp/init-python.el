@@ -40,7 +40,7 @@
 ;; (when (maybe-require-package 'reformatter)
 ;;   (reformatter-define black :program "black"))
 
-(require 'dap-python)
+(use-package dap-python)
 
 (provide 'init-python)
 ;;; init-python.el ends here
