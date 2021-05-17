@@ -383,21 +383,23 @@ typical word processor."
 
 
 ;;; org-ref
-(setq org-ref-bibliography-notes "~/Documents/bib/notes"
-      org-ref-default-bibliography '("~/Documents/mybib.bib")
-      org-ref-pdf-directory "~/Documents/bib/pdf")
 
-(defun my/org-ref-open-pdf-at-point ()
-  "Open the pdf for bibtex key under point if it exists."
-  (interactive)
-  (let* ((results (org-ref-get-bibtex-key-and-file))
-         (key (car results))
-         (pdf-file (car (bibtex-completion-find-pdf key))))
-    (if (file-exists-p pdf-file)
-        (org-open-file pdf-file)
-      (message "No PDF found for %s" key))))
-
-(setq org-ref-open-pdf-function 'my/org-ref-open-pdf-at-point)
+(use-package org-ref
+  :init
+  (setq org-ref-bibliography-notes "~/Documents/bib/notes"
+        org-ref-default-bibliography '("~/Documents/mybib.bib")
+        org-ref-pdf-directory "~/Documents/bib/pdf")
+  :config
+  (defun my/org-ref-open-pdf-at-point ()
+    "Open the pdf for bibtex key under point if it exists."
+    (interactive)
+    (let* ((results (org-ref-get-bibtex-key-and-file))
+           (key (car results))
+           (pdf-file (car (bibtex-completion-find-pdf key))))
+      (if (file-exists-p pdf-file)
+          (org-open-file pdf-file)
+        (message "No PDF found for %s" key))))
+  (setq org-ref-open-pdf-function 'my/org-ref-open-pdf-at-point))
 
 
 ;;; Latex Setting
@@ -405,7 +407,6 @@ typical word processor."
 ;;(setq org-latex-pdf-process (list "latexmk -pdflatex=xelatex -shell-escape -bibtex -f -pdf %f"))
 ;; (setq org-latex-pdf-process (list "latexmk -xelatex -gg -shell-escape -bibtex -f -pdf %b.tex"))
 (setq org-latex-pdf-process (list "latexmk -pdflatex='%latex -shell-escape -interaction nonstopmode' -pdf -output-directory=%o %f"))
-(require-package 'org-ref)
 
 ;;odt export settings
 (setq org-latex-to-mathml-convert-command
@@ -415,11 +416,14 @@ typical word processor."
 
 ;;; org-roam
 ;;;
-(setq org-roam-directory "~/OneDrive/notes/org/org-roam")
-(setq org-roam-db-location "~/OneDrive/notes/org/org-roam/org-roam.db")
-(add-hook 'after-init-hook 'org-roam-mode)
-(setq org-roam-tag-sources '(prop vanilla))
-
+(use-package org-roam
+  :init
+  (setq org-roam-directory "~/OneDrive/notes/org/org-roam")
+  (setq org-roam-db-location "~/OneDrive/notes/org/org-roam/org-roam.db")
+  (setq org-roam-tag-sources '(prop vanilla))
+  :hook
+  (after-init . org-roam-mode)
+  )
 
 
 ;;; org-roam-bibtex
@@ -429,14 +433,14 @@ typical word processor."
 
 
 ;;;ox-hugo
-(with-eval-after-load 'ox
-  (require 'ox-hugo))
+(use-package ox-hugo
+  :ensure nil            ;Auto-install the package from Melpa (optional)
+  :after ox)
 
 
 ;;; org-bullets
-(require-package 'org-bullets)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-
+(use-package org-bullets
+  :hook (org-mode . (lambda () (org-bullets-mode 1))))
 
 
 ;;; pretty entities
@@ -453,21 +457,22 @@ typical word processor."
 ;; (add-hook 'text-mode-hook 'olivetti-mode)
 
 
-(require 'org-crypt)
-(org-crypt-use-before-save-magic)
-(setq org-tags-exclude-from-inheritance '("crypt"))
-
-(setq org-crypt-key nil)
+(use-package org-crypt
+  :config
+  (org-crypt-use-before-save-magic)
+  (setq org-tags-exclude-from-inheritance '("crypt"))
+  (setq org-crypt-key nil)
+  )
 ;; GPG key to use for encryption
 ;; Either the Key ID or set to nil to use symmetric encryption.
 
 
 ;; org-babel
-(require-package 'ob-ipython)
-(setq org-confirm-babel-evaluate nil)   ;don't prompt me to confirm everytime I want to evaluate a block
-
-;;; display/update images in the buffer after I evaluate
-(add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append)
+(use-package ob-ipython
+  :config
+  (setq org-confirm-babel-evaluate nil)   ;don't prompt me to confirm everytime I want to evaluate a block
+  (add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append) ;;; display/update images in the buffer after I evaluate
+  )
 
 
 ;; org-download
