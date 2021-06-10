@@ -20,15 +20,16 @@
 (setq TeX-source-correlate-start-server t)
 (setq TeX-source-correlate-method 'synctex)
 (setq TeX-view-program-list 
-  '(("Sumatra PDF" ("\"d:/Program Files/SumatraPDF/SumatraPDF.exe\" -reuse-instance" 
+      '(("Sumatra PDF" ("\"d:/Program Files/SumatraPDF/SumatraPDF.exe\" -reuse-instance" 
 
-                      (mode-io-correlate " -forward-search %b %n ") " %o"))))
+                        (mode-io-correlate " -forward-search %b %n ") " %o"))
+        ("Evince" "evince %o")        ))
 
 (setq TeX-view-program-selection  
 
       '(((output-dvi style-pstricks) "dvips and start") (output-dvi "Yap") 
 
-       (output-pdf "Sumatra PDF") (output-html "start")))
+       (output-pdf "Evince") (output-html "start")))
 
 
 
