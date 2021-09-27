@@ -27,5 +27,7 @@
     (add-hook 'after-init-hook 'company-quickhelp-mode)))
 
 
+(setq company-dabbrev-downcase nil)
+
 (provide 'init-company)
 ;;; init-company.el ends here
