@@ -416,14 +416,15 @@ typical word processor."
 
 ;;; org-roam
 ;;;
-;; (use-package org-roam
-;;   :init
-;;   (setq org-roam-directory "~/OneDrive/notes/org/org-roam")
-;;   (setq org-roam-db-location "~/OneDrive/notes/org/org-roam/org-roam.db")
-;;   (setq org-roam-tag-sources '(prop vanilla))
-;;   :hook
-;;   (after-init . org-roam-mode)
-;;   )
+(use-package org-roam
+  :init
+  (setq org-roam-directory "~/OneDrive/notes/org/org-roam")
+  (setq org-roam-db-location "~/OneDrive/notes/org/org-roam/org-roam.db")
+  (setq org-roam-tag-sources '(prop vanilla))
+  (setq org-roam-v2-ack t)
+  :hook
+  (after-init . org-roam-mode)
+  )
 
 
 ;;; org-roam-bibtex

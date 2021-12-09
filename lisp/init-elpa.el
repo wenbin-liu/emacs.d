@@ -15,8 +15,8 @@
 
 ;;; Standard package repositories
 
-(setq package-archives '( ("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-                          ("melpa"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+ (setq package-archives '(("gnu"   . "http://elpa.zilongshanren.com/gnu/")
+                           ("melpa" . "http://elpa.zilongshanren.com/melpa/")))
 ;; Official MELPA Mirror, in case necessary.
 ;;(add-to-list 'package-archives (cons "melpa-mirror" (concat proto "://www.mirrorservice.org/sites/melpa.org/packages/")) t)
 
