@@ -385,10 +385,6 @@ typical word processor."
 ;;; org-ref
 
 (use-package org-ref
-  :init
-  (setq org-ref-bibliography-notes "~/Documents/bib/notes"
-        org-ref-default-bibliography '("~/Documents/mybib.bib")
-        org-ref-pdf-directory "~/Documents/bib/pdf")
   :config
   (defun my/org-ref-open-pdf-at-point ()
     "Open the pdf for bibtex key under point if it exists."
@@ -416,14 +412,14 @@ typical word processor."
 
 ;;; org-roam
 ;;;
-(use-package org-roam
-  :init
-  (setq org-roam-directory "~/OneDrive/notes/org/org-roam")
-  (setq org-roam-db-location "~/OneDrive/notes/org/org-roam/org-roam.db")
-  (setq org-roam-tag-sources '(prop vanilla))
-  :hook
-  (after-init . org-roam-mode)
-  )
+;; (use-package org-roam
+;;   :init
+;;   (setq org-roam-directory "~/OneDrive/notes/org/org-roam")
+;;   (setq org-roam-db-location "~/OneDrive/notes/org/org-roam/org-roam.db")
+;;   (setq org-roam-tag-sources '(prop vanilla))
+;;   :hook
+;;   (after-init . org-roam-mode)
+;;   )
 
 
 ;;; org-roam-bibtex
@@ -440,6 +436,7 @@ typical word processor."
 
 ;;; org-bullets
 (use-package org-bullets
+  :ensure t
   :hook (org-mode . (lambda () (org-bullets-mode 1))))
 
 

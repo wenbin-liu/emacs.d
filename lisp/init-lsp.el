@@ -22,6 +22,7 @@
 
 ;; optionally if you want to use debugger
 (use-package dap-mode
+  :ensure t
   :config
   (setq dap-auto-configure-features '(sessions locals controls tooltip)))
 ;; (use-package dap-LANGUAGE) to load the dap adapter for your language
