@@ -422,8 +422,6 @@ typical word processor."
   (setq org-roam-db-location "~/OneDrive/notes/org/org-roam/org-roam.db")
   (setq org-roam-tag-sources '(prop vanilla))
   (setq org-roam-v2-ack t)
-  :hook
-  (after-init . org-roam-mode)
   )
 
 
