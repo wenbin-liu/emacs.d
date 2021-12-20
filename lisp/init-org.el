@@ -389,17 +389,18 @@ typical word processor."
 ;;; org-ref
 
 (use-package org-ref
-  :config
-  (defun my/org-ref-open-pdf-at-point ()
-    "Open the pdf for bibtex key under point if it exists."
-    (interactive)
-    (let* ((results (org-ref-get-bibtex-key-and-file))
-           (key (car results))
-           (pdf-file (car (bibtex-completion-find-pdf key))))
-      (if (file-exists-p pdf-file)
-          (org-open-file pdf-file)
-        (message "No PDF found for %s" key))))
-  (setq org-ref-open-pdf-function 'my/org-ref-open-pdf-at-point))
+  ;; :config
+  ;; (defun my/org-ref-open-pdf-at-point ()
+  ;;   "Open the pdf for bibtex key under point if it exists."
+  ;;   (interactive)
+  ;;   (let* ((results (org-ref-get-bibtex-key-and-file))
+  ;;          (key (car results))
+  ;;          (pdf-file (car (bibtex-completion-find-pdf key))))
+  ;;     (if (file-exists-p pdf-file)
+  ;;         (org-open-file pdf-file)
+  ;;       (message "No PDF found for %s" key))))
+  ;; (setq org-ref-open-pdf-function 'my/org-ref-open-pdf-at-point)
+  )
 
 
 ;;; Latex Setting
@@ -417,30 +418,39 @@ typical word processor."
 ;;; org-roam
 ;;;
 (use-package org-roam
+  :ensure t
   :init
   (setq org-roam-directory "~/OneDrive/notes/org/org-roam")
   (setq org-roam-db-location "~/OneDrive/notes/org/org-roam/org-roam.db")
   (setq org-roam-tag-sources '(prop vanilla))
   (setq org-roam-v2-ack t)
+  :bind (("C-c n l" . org-roam-buffer-toggle)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n g" . org-roam-graph)
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n c" . org-roam-capture)
+         ;; Dailies
+         ("C-c n j" . org-roam-dailies-capture-today))
   )
 
 
 ;;; org-roam-bibtex
 (use-package org-roam-bibtex
+  :ensure t
   :after org-roam
-  :hook (org-roam-mode . org-roam-bibtex-mode))
+  )
 
 
 ;;;ox-hugo
 (use-package ox-hugo
-  :ensure nil            ;Auto-install the package from Melpa (optional)
+  :ensure t          ;Auto-install the package from Melpa (optional)
   :after ox)
 
 
-;;; org-bullets
+;; org-bullets
 (use-package org-bullets
   :ensure t
-  :hook (org-mode . (lambda () (org-bullets-mode 1))))
+  :hook (org-mode . org-bullets-mode))
 
 
 ;;; pretty entities
