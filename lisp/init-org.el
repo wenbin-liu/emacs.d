@@ -433,6 +433,7 @@ typical word processor."
          ("C-c n c" . org-roam-capture)
          ;; Dailies
          ("C-c n j" . org-roam-dailies-capture-today))
+  :config (org-roam-db-autosync-mode)
   )
 
 
