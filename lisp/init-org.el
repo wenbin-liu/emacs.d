@@ -422,8 +422,8 @@ typical word processor."
 (use-package org-roam
   :ensure t
   :init
-  (setq org-roam-directory "~/OneDrive/notes/org/org-roam")
-  (setq org-roam-db-location "~/OneDrive/notes/org/org-roam/org-roam.db")
+  (setq org-roam-directory "~/Documents/org-roam")
+  (setq org-roam-db-location "~/Documents/org-roam/org-roam.db")
   (setq org-roam-tag-sources '(prop vanilla))
   (setq org-roam-v2-ack t)
   :bind (("C-c n l" . org-roam-buffer-toggle)
@@ -436,6 +436,15 @@ typical word processor."
   :config
   (org-roam-db-autosync-mode)
   (setq org-id-track-globally t)
+  (setq org-roam-capture-templates '(
+                                     ("d" "default" plain "%?"
+                                      :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org"
+                                                         "#+title: ${title}\n")
+                                      :unnarrowed t)
+                                     ("e" "encryption" plain "%?"
+                                      :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org.gpg"
+                                                         "#+title: ${title}\n")
+                                      :unnarrowed )))
   )
 
 
