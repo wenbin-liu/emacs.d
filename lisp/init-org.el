@@ -402,6 +402,18 @@ typical word processor."
   ;;         (org-open-file pdf-file)
   ;;       (message "No PDF found for %s" key))))
   ;; (setq org-ref-open-pdf-function 'my/org-ref-open-pdf-at-point)
+  :init
+  (with-eval-after-load 'ox
+    (defun my/org-ref-process-buffer--html (backend)
+      "Preprocess `org-ref' citations to HTML format.
+
+Do this only if the export backend is `html' or a derivative of
+that."
+      ;; `ox-hugo' is derived indirectly from `ox-html'.
+      ;; ox-hugo <- ox-blackfriday <- ox-md <- ox-html
+      (when (org-export-derived-backend-p backend 'html)
+        (org-ref-process-buffer 'html)))
+    (add-to-list 'org-export-before-parsing-hook #'my/org-ref-process-buffer--html))
   )
 
 
@@ -468,7 +480,7 @@ typical word processor."
 
 
 ;;; pretty entities
-(setq org-pretty-entities t)
+(setq org-pretty-entities nil)
 
 
 ;; Olivetti
