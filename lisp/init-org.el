@@ -362,30 +362,28 @@ typical word processor."
 (with-eval-after-load 'org
   (org-babel-do-load-languages
    'org-babel-load-languages
-   (append
-    '((shell . t)) ;; Don't know why shell is not loaded. So this is needed
-    (seq-filter
-     (lambda (pair)
-       (featurep (intern (concat "ob-" (symbol-name (car pair))))))
-     '((R . t)
-       (ditaa . t)
-       (dot . t)
-       (emacs-lisp . t)
-       (gnuplot . t)
-       (haskell . nil)
-       (latex . t)
-       (ledger . t)
-       (ocaml . nil)
-       (octave . t)
-       (plantuml . t)
-       (python . t)
-       (ruby . t)
-       (screen . nil)
-       (sh . t) ;; obsolete
-       (shell . t)
-       (sql . t)
-       (ipython . t)
-       (sqlite . t))))))
+   (seq-filter
+    (lambda (pair)
+      (locate-library (concat "ob-" (symbol-name (car pair)))))
+    '((R . t)
+      (ditaa . t)
+      (dot . t)
+      (emacs-lisp . t)
+      (gnuplot . t)
+      (haskell . nil)
+      (latex . t)
+      (ledger . t)
+      (ocaml . nil)
+      (octave . t)
+      (plantuml . t)
+      (python . t)
+      (ruby . t)
+      (screen . nil)
+      (sh . t) ;; obsolete
+      (shell . t)
+      (sql . t)
+      (ipython . t)
+      (sqlite . t)))))
 
 
 ;;; org-ref
