@@ -55,6 +55,7 @@
 
 
 (use-package lsp-mode
+  :ensure t
   :hook  ((haskell-mode haskell-literate-mode) . lsp))
 
 (use-package lsp-haskell)

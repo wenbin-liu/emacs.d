@@ -400,6 +400,7 @@ typical word processor."
   ;;         (org-open-file pdf-file)
   ;;       (message "No PDF found for %s" key))))
   ;; (setq org-ref-open-pdf-function 'my/org-ref-open-pdf-at-point)
+  :ensure t
   :init
   (with-eval-after-load 'ox
     (defun my/org-ref-process-buffer--html (backend)
@@ -503,6 +504,7 @@ that."
 
 ;; org-babel
 (use-package ob-ipython
+  :ensure t
   :config
   (setq org-confirm-babel-evaluate nil)   ;don't prompt me to confirm everytime I want to evaluate a block
   (add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append) ;;; display/update images in the buffer after I evaluate
@@ -514,6 +516,15 @@ that."
   :ensure t
   :init
   (add-hook 'dired-mode-hook 'org-download-enable))
+
+
+;; olivitte mode
+(use-package olivetti
+  :ensure t
+  :hook
+  ((org-mode . olivetti-mode)
+   (org-mode . org-indent-mode)))
+
 
 
 (provide 'init-org)

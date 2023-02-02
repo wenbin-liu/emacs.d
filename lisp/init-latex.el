@@ -29,11 +29,11 @@
 
       '(((output-dvi style-pstricks) "dvips and start") (output-dvi "Yap") 
 
-       (output-pdf "Evince") (output-html "start")))
+        (output-pdf "Evince") (output-html "start")))
 
 
 
-(setq TeX-command-force "LaTeX")
+(setq TeX-command-force "LaTeXmk")
 (setq TeX-clean-confirm t)
 
 ;; Add -shell-escape ;minted needs this
@@ -44,6 +44,12 @@
              TeX-run-TeX nil (latex-mode doctex-mode) :help "Run LaTeX")
            )
   )
+;;add latexmk
+(eval-after-load "tex"
+  '(add-to-list 'TeX-command-list
+                '("LaTeXmk" "latexmk %s" TeX-run-command t t :help "Run LaTeXmk")
+                t))
+
 
 ;; Helm/Ivy-bibtex Setting
 (autoload 'ivy-bibtex "ivy-bibtex" "" t)
