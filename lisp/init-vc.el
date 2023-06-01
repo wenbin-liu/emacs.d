@@ -6,14 +6,28 @@
 
 ;;; Code:
 
-(when (maybe-require-package 'diff-hl)
-  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
-  (add-hook 'after-init-hook 'global-diff-hl-mode)
+;; (when (maybe-require-package 'diff-hl)
+;;   (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
+;;   (add-hook 'after-init-hook 'global-diff-hl-mode)
 
-  (with-eval-after-load 'diff-hl
-    (define-key diff-hl-mode-map
-      (kbd "<left-fringe> <mouse-1>")
-      'diff-hl-diff-goto-hunk)))
+;;   (with-eval-after-load 'diff-hl
+;;     (define-key diff-hl-mode-map
+;;       (kbd "<left-fringe> <mouse-1>")
+;;       'diff-hl-diff-goto-hunk)))
 
+(use-package diff-hl
+  :ensure t
+  :hook
+  (magit-post-refresh . diff-hl-magit-post-refresh)
+  (after-init . global-diff-hl-mode)
+  :config
+  (define-key diff-hl-mode-map
+    (kbd "<left-fringe> <mouse-1>")
+    'diff-hl-diff-goto-hunk)
+  )
+
+(use-package magit
+  :ensure t
+  )
 (provide 'init-vc)
 ;;; init-vc.el ends here
