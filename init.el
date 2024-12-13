@@ -48,6 +48,7 @@
 (require 'init-gui-frames)
 (require 'init-minibuffer)
 (require 'init-vc)
+(require 'init-corfu)
 
 ;; Extra packages which don't require any configuration
 
